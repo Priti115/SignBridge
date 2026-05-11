@@ -1,0 +1,61 @@
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind base;
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind components;
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  background: white;
+  color: #18181b;
+  font-family: sans-serif;
+}
+
+/* Global Button Animation */
+button {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  padding: 12px 24px; /* Added for better shape */
+  font-weight: bold;
+}
+
+/* Primary Gradient Button */
+.gradient-button {
+  position: relative;
+  background: linear-gradient(to right, oklch(62.3% 0.214 259.815), oklch(78.9% 0.154 211.53));
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 12px 24px;
+  z-index: 1;
+}
+
+.gradient-button:hover {
+  background: white; /* Match your page background */
+  color: transparent;
+}
+
+/* The Border & Text Gradient */
+.gradient-button:hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 15px; 
+  padding: 2px; /* This creates the border thickness */
+  background: linear-gradient(to right, oklch(62.3% 0.214 259.815), oklch(78.9% 0.154 211.53));
+  -webkit-mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  z-index: -1;
+}
+
+.gradient-button:hover {
+  background-image: linear-gradient(to right, oklch(62.3% 0.214 259.815), oklch(78.9% 0.154 211.53));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
